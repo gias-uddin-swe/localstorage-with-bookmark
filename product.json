@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Widget 3000",
+    "description": "The Widget 3000 is the latest and greatest in widget technology. With its sleek design and advanced features, you won't find a better widget on the market.",
+    "price": 49.99,
+    "inventory": 100,
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "category": "electronics"
+  },
+  {
+    "id": 2,
+    "name": "SuperSonic Hair Dryer",
+    "description": "The SuperSonic Hair Dryer is the fastest and most powerful hair dryer on the market. With its advanced technology, you can dry your hair in minutes without damaging it.",
+    "price": 149.99,
+    "inventory": 50,
+    "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+    "category": "beauty"
+  },
+  {
+    "id": 3,
+    "name": "Organic Protein Powder",
+    "description": "Our Organic Protein Powder is made from the highest quality ingredients, and is perfect for anyone looking to add more protein to their diet. With its great taste and high protein content, it's the perfect supplement for athletes and fitness enthusiasts.",
+    "price": 29.99,
+    "inventory": 200,
+    "image": "https://fakestoreapi.com/img/61pHAEJ4NML._AC_UX679_.jpg",
+    "category": "health"
+  },
+  {
+    "id": 4,
+    "name": "Smart Watch",
+    "description": "The Smart Watch is the ultimate accessory for anyone who wants to stay connected on the go. With its advanced features, you can track your fitness, check your email, and even make phone calls from your wrist.",
+    "price": 199.99,
+    "inventory": 75,
+    "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+    "category": "electronics"
+  },
+  {
+    "id": 5,
+    "name": "Scented Candles",
+    "description": "Our Scented Candles are the perfect addition to any home. With their delightful scents and elegant design, they make a great gift for any occasion.",
+    "price": 19.99,
+    "inventory": 150,
+    "image": "https://fakestoreapi.com/img/81zfxAufy6L._AC_UL320_SR214,320_.jpg",
+    "category": "home"
+  },
+  {
+    "id": 6,
+    "name": "Gaming Mouse",
+    "description": "The Gaming Mouse is designed for serious gamers who demand the best performance. With its high precision sensors and customizable buttons, you can take your gaming to the next level.",
+    "price": 79.99,
+    "inventory": 100,
+    "image": "https://fakestoreapi.com/img/71b49I7rJgL._AC_SL1500_.jpg",
+    "category": "electronics"
+  }
+]
