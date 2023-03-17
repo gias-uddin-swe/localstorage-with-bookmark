@@ -9,21 +9,22 @@ const displayProduct = (data) => {
   data.forEach((product) => {
     const card = document.createElement("div");
     card.classList.add("card", "m-2");
-    const isBookmarked = checkIsBookmark(product.id);
+    const isBookmarked = checkBookmark(product.id);
     console.log(isBookmarked);
+
     card.innerHTML = `
           <div class="bookmark-icon">
-         
+        
           <i onclick="${
             isBookmarked
-              ? `removeBookmark('${product.id}')`
-              : `handleBookmark('${product?.name}','${product?.price}','${product?.id}','${product?.image}')`
-          }" class="${
-      isBookmarked ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"
-    }"></i>
+              ? `handleRemoveBookmark('${product.id}')`
+              : `handleBookmark('${product.name}','${product.id}','${product.price}')`
+          }" 
+           class="${
+             isBookmarked ? "fa-solid fa-bookmark" : "fa-regular fa-bookmark"
+           }"></i>
 
 
-         
         </div>
         <div class="product-img-container">
           <img
@@ -43,46 +44,43 @@ const displayProduct = (data) => {
   });
 };
 
-const handleBookmark = (name, price, id, image) => {
-  //   console.log(name, price, id, image);
+// ! handle book mark
 
+const handleBookmark = (name, id, price) => {
   const previousBookmark = JSON.parse(localStorage.getItem("bookmark"));
-  const currentMarkedItem = { name, price, id, image, bookmarked: true };
   let bookmark = [];
+  const product = { name, id, price, bookmark: true };
+
   if (previousBookmark) {
-    const isThisItemMarked = previousBookmark.find((pd) => pd.id == id);
-    console.log(isThisItemMarked);
-    if (isThisItemMarked) {
-      alert("this product already bookmarked !!!");
-      return 0;
+    const isThisProductMarked = previousBookmark.find((pd) => pd.id == id);
+    if (isThisProductMarked) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "already bokmakred",
+        footer: '<a href="">Why do I have this issue?</a>',
+      });
     } else {
-      bookmark.push(...previousBookmark, currentMarkedItem);
+      bookmark.push(...previousBookmark, product);
       localStorage.setItem("bookmark", JSON.stringify(bookmark));
+      console.log(bookmark);
     }
   } else {
-    bookmark.push(currentMarkedItem);
+    bookmark.push(product);
     localStorage.setItem("bookmark", JSON.stringify(bookmark));
   }
-  checkIsBookmark(id);
 };
-const removeBookmark = (id) => {
+const handleRemoveBookmark = (id) => {
   const previousBookmark = JSON.parse(localStorage.getItem("bookmark"));
-
-  if (previousBookmark) {
-    const removeItem = previousBookmark?.filter(
-      (bookmark) => bookmark.id != id
-    );
-    localStorage.setItem("bookmark", JSON.stringify(removeItem));
-  }
-  checkIsBookmark(id);
+  const restOfThem = previousBookmark.filter((product) => product.id != id);
+  localStorage.setItem("bookmark", JSON.stringify(restOfThem));
 };
 
-const checkIsBookmark = (id) => {
+const checkBookmark = (id) => {
   const previousBookmark = JSON.parse(localStorage.getItem("bookmark"));
 
-  const isExist = previousBookmark?.find((pd) => pd.id == id);
-  console.log(id);
-  if (isExist) {
+  const isBookmarked = previousBookmark?.find((product) => product.id == id);
+  if (isBookmarked) {
     return true;
   } else {
     return false;
@@ -90,9 +88,3 @@ const checkIsBookmark = (id) => {
 };
 
 loadProduct();
-
-{
-  /* <i onclick="handleBookmark('${product?.name}','${product?.price}','${product?.id}','${product?.image}')" class="fa-regular fa-bookmark" />
-    
-    <i onclick="removeBookmark('${product.id}')" class="fa-solid fa-bookmark"></i> */
-}
